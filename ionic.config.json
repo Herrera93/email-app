@@ -1,0 +1,8 @@
+{
+  "name": "email-app",
+  "app_id": "e84b46af",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
