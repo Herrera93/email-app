@@ -31,7 +31,7 @@
     "@ngrx/store": "^4.1.1",
     "@ngrx/store-devtools": "^4.1.1",
     "angularfire2": "^5.0.0-rc.5-next",
-    "firebase": "^4.8.0",
+    "firebase": "4.8.0",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "ngx-quill": "^2.0.4",
