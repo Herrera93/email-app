@@ -4,7 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { Store } from '@ngrx/store';
-import * as fromAuth from '../pages/auth/reducers';
+import { State, getSignedIn } from '../pages/auth/reducers';
 import { SigninPageComponent } from '../pages/auth/containers/signin-page/signin-page.component';
 import { SignupPageComponent } from '../pages/auth/containers/signup-page/signup-page.component';
 import { ComposeEmailPageComponent } from '../pages/emails/containers/compose-email-page/compose-email-page.component';
@@ -23,7 +23,7 @@ export class MyApp {
   constructor(public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    private store: Store<fromAuth.State>
+    private store: Store<State>
   ) {
     this.initializeApp();
 
@@ -33,7 +33,7 @@ export class MyApp {
       { icon: 'person', title: 'Sign Up', component: SignupPageComponent }
     ];
 
-    this.store.select(fromAuth.getSignedIn)
+    this.store.select(getSignedIn)
       .subscribe((signedIn) => {
         if (signedIn) {
           this.pages = [
