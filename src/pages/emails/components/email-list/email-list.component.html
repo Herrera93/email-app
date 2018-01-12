@@ -1,0 +1,48 @@
+<div *ngIf="emails.length > 0; else loading" class="list-container">
+    <ion-grid>
+        <ion-row class="toolbar">
+            <ion-col col-1>
+                <ion-checkbox></ion-checkbox>
+            </ion-col>
+            <ion-col col-1 class="select-col">
+                <ion-select selectedText="">
+                    <ion-option *ngFor="let select of selections">
+                        {{select}}
+                    </ion-option>
+                </ion-select>
+            </ion-col>
+            <ion-col *ngFor="let option of options" col-1>
+                <button ion-button icon-only color="dark" clear>
+                    <ion-icon [name]="option.icon"></ion-icon>
+                </button>
+            </ion-col>
+            <ion-col></ion-col>
+            <ion-col text-end col-2>
+                <span>{{from}}-{{to}} of {{total}}</span>
+            </ion-col>
+        </ion-row>
+        <ion-row class="emails">
+            <ion-col>
+                <ion-list>
+                    <ion-item *ngFor="let email of emails" (click)="onSelect(email)">
+                        <ion-checkbox item-start></ion-checkbox>
+                        <button item-start ion-button icon-only clear color="dark" class="important">
+                            <ion-icon name="star-outline"></ion-icon>
+                        </button>
+                        <ion-label>
+                            <h2>{{email.from.displayName}}</h2>
+                            <h3>{{email.subject}}</h3>
+                            <p text-nowrap>{{email.unformattedMessage}}</p>
+                        </ion-label>
+                        <span item-end>{{email.date | date:'MMM dd'}}</span>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</div>
+
+<ng-template #loading>
+    <ion-icon name="mail"></ion-icon>
+    <span>No emails available</span>
+</ng-template>

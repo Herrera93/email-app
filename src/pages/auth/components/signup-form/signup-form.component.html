@@ -1,0 +1,29 @@
+<ion-list>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <ion-item>
+            <ion-label floating>Display Name</ion-label>
+            <ion-input type="text" formControlName="displayName"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Confirm Password</ion-label>
+            <ion-input type="password" formControlName="confirmPassword"></ion-input>
+        </ion-item>
+
+        <ion-fab right bottom>
+            <button ion-fab mini type="submit">
+                <ion-icon name="send"></ion-icon>
+            </button>
+        </ion-fab>
+    </form>
+</ion-list>

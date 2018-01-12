@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" formControlName="to"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Subject</ion-label>
+            <ion-input type="text" formControlName="subject"></ion-input>
+        </ion-item>
+    </ion-list>
+    <div class="quill-div">
+        <quill-editor [modules]="modules" theme="snow" formControlName="message" required (onContentChanged)="contentChange($event)">
+        </quill-editor>
+    </div>
+    <ion-fab right bottom>
+        <button ion-fab mini type="submit">
+            <ion-icon name="send"></ion-icon>
+        </button>
+    </ion-fab>
+</form>

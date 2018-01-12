@@ -1,0 +1,17 @@
+<ion-list>
+    <ion-item>
+        <h1 ion-text>{{email.subject}}</h1>
+        <h3 ion-text>From: {{fromName}} ({{fromEmail}})</h3>
+        <h3 ion-text>To: Me</h3>
+        <div item-end class="item-end">
+            <ion-icon name="star-outline" *ngIf="!isImportant"></ion-icon>
+            <ion-icon name="star" class="important" *ngIf="isImportant"></ion-icon>
+            <br>
+            <span>{{date | date:'MMM dd'}}</span>
+        </div>
+    </ion-item>
+    <ion-item>
+        <quill-editor [readOnly]="true" [modules]="{toolbar: false}">
+        </quill-editor>
+    </ion-item>
+</ion-list>

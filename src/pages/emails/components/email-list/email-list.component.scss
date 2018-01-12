@@ -1,0 +1,51 @@
+.select-col ion-select {
+    height: 40px;
+    max-width: 100%;
+    padding: 0;
+    .select-icon {
+        position: static;
+    }
+}
+
+.list-container {
+    height: 100%;
+    ion-grid {
+        padding: 0!important;
+        height: 100%;
+        .toolbar {
+            height: 40px;
+            background-color: #f5f5f5;
+            ion-col {
+                height: 40px;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+            }
+        }
+
+        .emails {
+            height: 100%;
+        }
+    }
+}
+
+.item-checkbox{
+    ion-checkbox{
+        margin: 0!important;
+        button.item-cover{
+            width: 15%;
+        }
+    }
+
+    ion-label{
+        button.item-cover{
+            width: 85%;
+            right: 0;
+            left: auto;
+        }
+    }
+}
+
+.important {
+    margin: 8px 9px!important;
+}
