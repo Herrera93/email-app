@@ -1,0 +1,199 @@
+/* sass-loader doesnt like absolute imports*/
+#quill-editor {
+  position: relative; }
+
+.mention {
+  color: #0366d6; }
+
+.completions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25); }
+
+.completions > li {
+  margin: 0;
+  padding: 0; }
+
+.completions > li > button {
+  box-sizing: border-box;
+  height: 2em;
+  padding: .25em .5em;
+  margin: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none; }
+
+.completions > li > button:hover {
+  background: #ddd; }
+
+.completions > li > button:focus {
+  background: #ddd;
+  outline: none; }
+
+.completions > li > button > .matched {
+  font-weight: bold;
+  color: black; }
+
+.completions > li > button > * {
+  vertical-align: middle; }
+
+.rtc_completions {
+  list-style: none;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 6px;
+  background: #FFF;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12); }
+  .rtc_completions li {
+    margin: 2px 0;
+    padding: 0;
+    display: inline-block; }
+    .rtc_completions li:not(:last-of-type) {
+      margin-right: 3px; }
+
+.rtc_completions > li > button {
+  box-sizing: border-box;
+  padding: 3px 2px 6px;
+  margin: 0;
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: #efefef;
+  border-radius: 3px; }
+
+.rtc_completions > li > button:hover {
+  background: #2D9EE0;
+  color: #FFF; }
+
+.rtc_completions > li > button:focus {
+  background: #2D9EE0;
+  outline: none;
+  color: #FFF; }
+
+.rtc_completions > li > button.rtc-active {
+  background: red;
+  background: #2d9ee0;
+  outline: none;
+  color: #fff; }
+
+.rtc_completions > li > button > .matched {
+  font-weight: bold; }
+
+.rtc_completions > li > button > * {
+  vertical-align: middle; }
+
+.ico {
+  margin-right: 5px;
+  font-size: 18px;
+  line-height: 0;
+  vertical-align: middle; }
+
+#rtc-palette {
+  position: absolute;
+  max-width: 320px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  z-index: 4; }
+
+.bem {
+  font-size: 24px;
+  width: 34px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  margin: 2px; }
+
+#tab-filters {
+  width: 210px;
+  margin: 0px auto;
+  margin-top: 20px; }
+
+.rtc-tab {
+  display: inline-table;
+  text-align: center;
+  width: 30px;
+  height: 100%;
+  min-height: 30px;
+  cursor: pointer; }
+
+#tab-toolbar {
+  background-color: #f7f7f7;
+  padding: 4px 4px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15); }
+
+#tab-toolbar ul {
+  margin: 0px;
+  padding: 0px; }
+
+#tab-toolbar .active {
+  border-bottom: 3px solid #2ab27b; }
+
+#tab-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-height: 220px;
+  overflow-y: scroll;
+  padding: 2px;
+  background: #FFF; }
+
+#quill-editor x-contain, contain {
+  background: #ffbb88;
+  display: block; }
+
+#quill-editor table {
+  width: 100%;
+  border-collapse: collapse; }
+
+#quill-editor table td {
+  border: 1px solid black;
+  padding: 5px;
+  height: 25px; }
+
+button.ql-table::after {
+  content: "TABLE"; }
+
+.ql-picker.ql-table .ql-picker-label::before {
+  content: "TABLE"; }
+
+button.ql-contain::after {
+  content: "WRAP"; }
+
+button.ql-table[value="append-row"]::after {
+  content: "ROWS+"; }
+
+button.ql-table[value="append-col"]::after {
+  content: "COLS+"; }
+
+.ql-table,
+.ql-contain {
+  width: auto !important;
+  margin-right: -15px; }
+
+.textarea-rtc-control {
+  width: 25px;
+  height: 25px;
+  right: 4px;
+  top: 10px; }
+
+.ql-editor {
+  padding-right: 26px; }
+
+.toolbar-icon {
+  height: 25px;
+  width: 25px;
+  margin: auto; }
+
+.record-fill, .stop-fill {
+  fill: #6F6D70; }
+
+.rtc {
+  margin-bottom: -5px; }
