@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Store } from '@ngrx/store';
 import { State, getSignedIn } from '../pages/auth/reducers';
 import { SigninPageComponent } from '../pages/auth/containers/signin-page/signin-page.component';
+import { SignoutPageComponent } from '../pages/auth/containers/signout-page/signout-page.component';
 import { SignupPageComponent } from '../pages/auth/containers/signup-page/signup-page.component';
 import { ComposeEmailPageComponent } from '../pages/emails/containers/compose-email-page/compose-email-page.component';
 import { EmailsPageComponent } from '../pages/emails/containers/emails-page/emails-page.component';
@@ -39,7 +40,7 @@ export class MyApp {
           this.pages = [
             { icon: 'archive', title: 'Inbox', component: EmailsPageComponent },
             { icon: 'create', title: 'Compose', component: ComposeEmailPageComponent },
-            { icon: 'log-out', title: 'Sign Out', component: SigninPageComponent },
+            { icon: 'log-out', title: 'Sign Out', component: SignoutPageComponent },
           ];
         } else {
           this.pages = [

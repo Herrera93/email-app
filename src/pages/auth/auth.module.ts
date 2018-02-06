@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SigninPageComponent } from './containers/signin-page/signin-page.component';
+import { SignoutPageComponent } from './containers/signout-page/signout-page.component';
 import { SigninFormComponent } from './components/signin-form/signin-form.component';
 import { SignupPageComponent } from './containers/signup-page/signup-page.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
@@ -18,6 +19,7 @@ import { reducers } from './reducers';
 export const COMPONENTS = [
     SigninPageComponent,
     SigninFormComponent,
+    SignoutPageComponent,
     SignupPageComponent,
     SignupFormComponent
 ];
@@ -32,7 +34,8 @@ export const COMPONENTS = [
     exports: COMPONENTS,
     entryComponents: [
         SigninPageComponent,
-        SignupPageComponent
+        SignupPageComponent,
+        SignoutPageComponent
     ]
 })
 export class AuthModule {
