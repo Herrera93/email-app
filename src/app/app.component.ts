@@ -28,6 +28,16 @@ export class MyApp {
   ) {
     this.initializeApp();
 
+    
+    platform.ready().then(() => {
+      console.log("REGISTER GLOBALS");
+      console.log(Object.keys(iosrtc));
+      console.log("PLUGINS: " + (<any>window).iosrtc);
+      window['iosrtc'].registerGlobals();
+      if (navigator.platform === 'iOS') {
+      }
+    })
+
     // used for an example of ngFor and navigation
     this.pages = [
       { icon: 'log-in', title: 'Sign In', component: SigninPageComponent },
@@ -49,6 +59,7 @@ export class MyApp {
           ];
         }
       })
+
 
   }
 

@@ -1,5 +1,7 @@
 .quill-div {
     padding: 0px 16px;
+    -webkit-user-select: text;
+    
     quill-editor {
         white-space: normal;
     }
