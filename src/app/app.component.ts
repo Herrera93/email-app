@@ -31,11 +31,9 @@ export class MyApp {
     
     platform.ready().then(() => {
       console.log("REGISTER GLOBALS");
-      console.log(Object.keys(iosrtc));
+      console.log(Object.keys(window));
       console.log("PLUGINS: " + (<any>window).iosrtc);
       window['iosrtc'].registerGlobals();
-      if (navigator.platform === 'iOS') {
-      }
     })
 
     // used for an example of ngFor and navigation
