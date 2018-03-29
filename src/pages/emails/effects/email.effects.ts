@@ -8,6 +8,8 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { NavController } from 'ionic-angular';
+import { EmailsPageComponent } from '../../emails/containers/emails-page/emails-page.component';
 
 import { Email } from '../models/email.model';
 import { EmailsService } from '../services/emails.service';
@@ -23,7 +25,8 @@ export class EmailEffects {
 
     constructor(
         private actions$: Actions, 
-        private emailService: EmailsService
+        private emailService: EmailsService,
+        private navCtrl: NavController
     ) { }
 
     @Effect()
@@ -34,5 +37,10 @@ export class EmailEffects {
         .mergeMap(email => email.get())
         .map(email => new SendEmailSuccess(<Email>email.data()))
         .catch(error => of(new SendEmailFail(error)));
+
+        @Effect({ dispatch: false })
+        sendEmailSuccess$ = this.actions$
+            .ofType(EmailActionTypes.SendEmailSuccess)
+            .do(() => this.navCtrl.setRoot(EmailsPageComponent));
 
 }

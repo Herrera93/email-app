@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { QuillModule } from 'ngx-quill';
+import { File } from '@ionic-native/file';
 
 import { ComponentsModule } from './components';
 import { EmailEffects } from './effects/email.effects';
@@ -51,7 +52,8 @@ import { StorageService } from './services/storage.service';
     providers: [
         EmailsService,
         StorageService,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+        File
     ],
     entryComponents: [
         EmailsPageComponent,

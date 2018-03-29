@@ -5,6 +5,10 @@ import * as fromEmails from '../../reducers';
 import * as fromAuth from '../../../auth/reducers'
 import * as emails from '../../actions/email.actions';
 import * as storage from '../../actions/storage.actions';
+import { File } from '@ionic-native/file';
+import path from 'path';
+
+declare var VanillaFile;
 
 import 'rxjs/add/operator/merge';
 
@@ -20,7 +24,8 @@ import 'rxjs/add/operator/merge';
 })
 export class ComposeEmailPageComponent implements OnInit {
 
-  constructor(private store: Store<fromEmails.State>) { }
+  constructor(private store: Store<fromEmails.State>,
+    private file: File) { }
 
   ngOnInit() { }
 
@@ -29,39 +34,43 @@ export class ComposeEmailPageComponent implements OnInit {
     let email = Object.assign({}, $event);
     email.message.forEach(element => {
       if (element.hasOwnProperty('insert') && element.insert.hasOwnProperty('rtc')) {
-        let fileName = this.getFileName('webm');
-        let fileObject = new File([element.insert.rtc], fileName, {
-          type: 'video/webm'
-        });
-        this.store.dispatch(new storage.UploadFile(fileObject));
-        videoCounter++;
+        this.file.readAsArrayBuffer(path.dirname(element.insert.rtc), path.basename(element.insert.rtc))
+          .then(val => {
+            let fileName = this.getFileName('3gp');
+            let fileObject = new VanillaFile([val], fileName, {
+              type: 'video/3gpp'
+            });
+            this.store.dispatch(new storage.UploadFile(fileObject));
+            videoCounter++;
+
+            let subVideoCounter = 0;
+            this.store
+              .select(fromEmails.getStorageFileURL)
+              .merge(this.store.select(fromAuth.getUser))
+              .subscribe((val) => {
+                if (typeof val === 'string') {
+                  email.message = email.message.map(op => {
+                    if (op.hasOwnProperty('insert') &&
+                      op.insert.hasOwnProperty('rtc') &&
+                      op.insert.rtc instanceof Blob
+                    ) {
+                      op.insert.rtc = val;
+                      subVideoCounter++;
+                    }
+                    return op;
+                  });
+                } else {
+                  email.from = val;
+                }
+        
+                if (subVideoCounter === videoCounter && email.from !== null) {
+                  this.store.dispatch(new emails.SendEmail(email));
+                }
+              });
+          });
       }
     });
 
-    let subVideoCounter = 0;
-    this.store
-      .select(fromEmails.getStorageFileURL)
-      .merge(this.store.select(fromAuth.getUser))
-      .subscribe((val) => {
-        if (typeof val === 'string') {
-          email.message = email.message.map(op => {
-            if (op.hasOwnProperty('insert') &&
-              op.insert.hasOwnProperty('rtc') &&
-              op.insert.rtc instanceof Blob
-            ) {
-              op.insert.rtc = val;
-              subVideoCounter++;
-            }
-            return op;
-          });
-        } else {
-          email.from = val;
-        }
-
-        if (subVideoCounter === videoCounter && email.from !== null) {
-          this.store.dispatch(new emails.SendEmail(email));
-        }
-      });
   }
 
   // this function is used to generate random file name
