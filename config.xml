@@ -82,15 +82,16 @@
     <plugin name="cordova-plugin-device" spec="1.1.4" />
     <plugin name="cordova-plugin-splashscreen" spec="~4.0.1" />
     <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
-    <engine name="android" spec="~7.0.0" />
     <plugin name="cordova-plugin-camera" spec="^4.0.1" />
-    <engine name="ios" spec="~4.5.4" />
-    <plugin name="cordova-plugin-crosswalk-webview" spec="^2.4.0">
-        <variable name="XWALK_VERSION" value="23+" />
-        <variable name="XWALK_LITEVERSION" value="xwalk_core_library_canary:17+" />
-        <variable name="XWALK_COMMANDLINE" value="--disable-pull-to-refresh-effect" />
-        <variable name="XWALK_MODE" value="embedded" />
-        <variable name="XWALK_MULTIPLEAPK" value="true" />
-    </plugin>
     <plugin name="cordova-plugin-iosrtc" spec="^4.0.2" />
+    <plugin name="cordova-plugin-crosswalk-webview" spec="^2.4.0" />
+    <plugin name="cordova-plugin-media-capture" spec="^3.0.1" />
+    <edit-config file="*-Info.plist" mode="merge" target="NSMicrophoneUsageDescription">
+        <string>need microphone access to record sounds</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+        <string>need camera access to take video</string>
+    </edit-config>
+    <engine name="android" spec="~7.0.0" />
+    <engine name="ios" spec="4.5.4" />
 </widget>

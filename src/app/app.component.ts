@@ -11,6 +11,9 @@ import { SignupPageComponent } from '../pages/auth/containers/signup-page/signup
 import { ComposeEmailPageComponent } from '../pages/emails/containers/compose-email-page/compose-email-page.component';
 import { EmailsPageComponent } from '../pages/emails/containers/emails-page/emails-page.component';
 
+declare var cordova;
+declare var iosrtc;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -27,14 +30,6 @@ export class MyApp {
     private store: Store<State>
   ) {
     this.initializeApp();
-
-    
-    platform.ready().then(() => {
-      console.log("REGISTER GLOBALS");
-      console.log(Object.keys(window));
-      console.log("PLUGINS: " + (<any>window).iosrtc);
-      window['iosrtc'].registerGlobals();
-    })
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -67,6 +62,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      if((<any>window).device && (<any>window).device.platform == 'iOS'){
+        console.log("REGISTER GLOBALS");
+        cordova.plugins.iosrtc.registerGlobals();
+        iosrtc = cordova.plugins.iosrtc;
+      }
     });
   }
 
